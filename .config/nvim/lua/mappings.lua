@@ -106,3 +106,8 @@ nomap("n", "<leader>h")
 map("n", "<leader>ca", function()
   vim.lsp.buf.code_action()
 end, { desc = "Code action" })
+
+-- toggle inlay hints
+map("n", "<leader>dh", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
+end, { desc = "✨lsp toggle inlay hints" })

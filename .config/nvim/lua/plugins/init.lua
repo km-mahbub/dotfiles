@@ -78,7 +78,7 @@ return {
   -- rust
   {
     "mrcjkb/rustaceanvim",
-    version = "^5", -- Recommended
+    version = "^6", -- Recommended
     lazy = false, -- This plugin is already lazy
     config = function()
       require("configs.rustaceanvim")
@@ -401,10 +401,6 @@ return {
       },
     },
     dependencies = {
-      {
-        "microsoft/vscode-js-debug",
-        build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
-      },
       {
         "mxsdev/nvim-dap-vscode-js",
         config = function()
