@@ -8,3 +8,6 @@ o.clipboard = "unnamedplus"
 
 -- relative line numbers
 o.relativenumber = true
+
+-- set color column to 80
+o.colorcolumn = "80"
