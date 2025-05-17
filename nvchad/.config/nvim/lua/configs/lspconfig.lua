@@ -9,6 +9,7 @@ lspconfig.servers = {
   "lua_ls",
   "gopls",
   "ts_ls",
+  "zls",
 }
 
 -- list of servers configured with default config.
@@ -106,4 +107,17 @@ lspconfig.ts_ls.setup({
   },
   filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
   root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+})
+
+lspconfig.zls.setup({
+  settings = {
+    zls = {
+      enable_inlay_hints = true,
+      enable_snippets = true,
+      -- enable_format = true,
+      -- enable_linting = true,
+      warn_style = true,
+    },
+  },
+  root_dir = lspconfig.util.root_pattern("build.zig", ".git", "zls.json"),
 })
