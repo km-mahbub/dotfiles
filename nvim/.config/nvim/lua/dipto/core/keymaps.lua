@@ -1,6 +1,6 @@
 local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
-local nomap = vim.keymap.del
+-- local nomap = vim.keymap.del
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
