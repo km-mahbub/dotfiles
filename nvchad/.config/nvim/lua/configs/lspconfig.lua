@@ -110,14 +110,9 @@ lspconfig.ts_ls.setup({
 })
 
 lspconfig.zls.setup({
-  settings = {
-    zls = {
-      enable_inlay_hints = true,
-      enable_snippets = true,
-      -- enable_format = true,
-      -- enable_linting = true,
-      warn_style = true,
-    },
-  },
-  root_dir = lspconfig.util.root_pattern("build.zig", ".git", "zls.json"),
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "zls" },
+  filetypes = { "zig", "zon" },
+  root_dir = lspconfig.util.root_pattern("zls.json", "build.zig", ".git"),
 })
