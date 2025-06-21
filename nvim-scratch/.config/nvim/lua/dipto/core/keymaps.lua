@@ -1,6 +1,5 @@
 local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
--- local nomap = vim.keymap.del
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -60,7 +59,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking (copying) text",
     group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
     callback = function()
-        require('vim.highlight').on_yank()
+        vim.highlight.on_yank()
     end,
 })
 
@@ -96,4 +95,3 @@ local isLspDiagnosticsVisible = true
         underline = isLspDiagnosticsVisible
     })
  end, { desc = "Toggle LSP diagnostics" })
-

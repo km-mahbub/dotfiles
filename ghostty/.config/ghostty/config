@@ -3,20 +3,24 @@
 # font-family = SFMono Nerd Font 
 font-family = JetBrainsMono Nerd Font
 font-size = 12
-theme = GruvboxDarkHard
+#theme = GruvboxDarkHard
+theme = rose-pine
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
 #adjust-cell-height = 35%
-background-opacity = 0.96
+background = #000000
+background-opacity = 0.70
+background-blur-radius = 40
+#macos-non-native-fullscreen = true
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
 
 window-padding-balance = true 
 window-save-state = always
-macos-titlebar-style=transparent
+macos-titlebar-style= transparent
 window-colorspace = "display-p3"
-background = 1C2021
+#background = 1C2021
 # foreground = d4be98
 
 # keybindings
