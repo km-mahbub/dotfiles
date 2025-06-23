@@ -132,5 +132,64 @@ return {
             end,
             desc = "Theme Switcher",
         },
+        {
+            "<leader>ft",
+            function()
+                local todo = require("todo-comments.fzf")
+                local keywords = require("todo-comments.config").options.keywords
+                local utils = require("fzf-lua.utils")
+
+                -- Wrap the original todo search
+                todo.todo({
+                    prompt = " TODOs> ",
+                    format = function(item)
+                        local kw = item.keyword or "TODO"
+                        local icon = keywords[kw] and keywords[kw].icon or ""
+                        local color = utils.ansi_codes[keywords[kw] and keywords[kw].color:lower() or "info"]
+
+                        local kw_label = string.format("%s%s%s", color, kw, utils.ansi_codes.reset)
+                        return string.format("%s %s %s:%d: %s", icon, kw_label, item.filename, item.lnum, item.text)
+                    end,
+                    previewer = "builtin",
+                    winopts = {
+                        preview = {
+                            layout = "vertical",
+                            vertical = "down:60%",
+                        },
+                    },
+                })
+            end,
+            desc = "Styled TODO picker",
+        },
+        {
+            "<leader>fT",
+            function()
+                local todo = require("todo-comments.fzf")
+                local keywords = require("todo-comments.config").options.keywords
+                local utils = require("fzf-lua.utils")
+
+                -- Wrap the original todo search
+                todo.todo({
+                    keywords = { "TODO", "FIXME", "BUG", "FIXIT", "ISSUE" },
+                    prompt = "🐞 TODO/FIXME> ",
+                    format = function(item)
+                        local kw = item.keyword or "TODO"
+                        local icon = keywords[kw] and keywords[kw].icon or ""
+                        local color = utils.ansi_codes[keywords[kw] and keywords[kw].color:lower() or "info"]
+
+                        local kw_label = string.format("%s%s%s", color, kw, utils.ansi_codes.reset)
+                        return string.format("%s %s %s:%d: %s", icon, kw_label, item.filename, item.lnum, item.text)
+                    end,
+                    previewer = "builtin",
+                    winopts = {
+                        preview = {
+                            layout = "vertical",
+                            vertical = "down:60%",
+                        },
+                    },
+                })
+            end,
+            desc = "Find TODO/FIXME/BUG",
+        },
     },
 }

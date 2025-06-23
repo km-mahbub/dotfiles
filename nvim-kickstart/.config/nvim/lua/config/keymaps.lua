@@ -106,3 +106,8 @@ vim.keymap.set("n", "<leader>cf", function()
         lsp_format = "fallback",
     })
 end, { desc = "Format current file" })
+
+-- opens parent dir over current active window
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+-- open parent dir in float window
+vim.keymap.set("n", "<leader>-", "<cmd>Oil --float<CR>", { desc = "Open Parent Directory in floating oil window" })
