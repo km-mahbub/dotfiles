@@ -15,6 +15,7 @@ return {
             "rafamadriz/friendly-snippets",
             "moyiz/blink-emoji.nvim",
             "ray-x/cmp-sql",
+            "giuxtaposition/blink-cmp-copilot",
         },
 
         -- use a release tag to download pre-built binaries
@@ -50,14 +51,49 @@ return {
             },
 
             -- (Default) Only show the documentation popup when manually triggered
-            completion = { documentation = { auto_show = true } },
+            completion = {
+                menu = {
+                    border = "rounded",
+                },
+                ghost_text = {
+                    enabled = true,
+                },
+                -- trigger = {
+                --   -- Disable if preset super-tab is used
+                --   show_in_snippet = true,
+                -- },
+
+                documentation = {
+                    auto_show = true,
+                    auto_show_delay_ms = 500,
+                    -- update_delay_ms = 0,
+
+                    window = {
+                        border = "rounded",
+                        desired_min_width = 30,
+                        -- direction_priority = {
+                        --   menu_north = { "s", "n", "e", "w" },
+                        --   menu_south = { "n", "s", "e", "w" },
+                        -- },
+                    },
+                },
+            },
             signature = { enabled = true },
 
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             sources = {
-                default = { "lsp", "path", "snippets", "buffer", "emoji", "sql" },
+                default = { "lsp", "path", "snippets", "buffer", "emoji", "sql", "copilot" },
                 providers = {
+                    copilot = {
+                        enabled = function()
+                            return vim.g.copilot_completion_enabled
+                        end,
+                        name = "copilot",
+                        module = "blink-cmp-copilot",
+                        score_offset = 100,
+                        should_show_items = true,
+                    },
                     emoji = {
                         module = "blink-emoji",
                         name = "Emoji",
