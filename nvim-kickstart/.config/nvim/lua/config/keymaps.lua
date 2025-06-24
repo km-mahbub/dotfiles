@@ -106,3 +106,6 @@ vim.keymap.set("n", "<leader>cf", function()
         lsp_format = "fallback",
     })
 end, { desc = "Format current file" })
+
+vim.keymap.set("n", "<leader>ls", ":LiveServerStart<CR>", { desc = "Start Live Server" })
+vim.keymap.set("n", "<leader>lq", ":LiveServerStop<CR>", { desc = "Stop Live Server" })
