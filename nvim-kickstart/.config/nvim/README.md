@@ -26,4 +26,3 @@ This neovim configuration is being build up incrementally from scratch.
 - [ ] mini.nvim
 - [ ] Remember position
 - [ ] lazydev
-

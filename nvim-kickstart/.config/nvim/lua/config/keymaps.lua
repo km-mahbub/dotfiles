@@ -53,7 +53,7 @@ vim.keymap.set(
 )
 
 -- Executes shell command from in here making file executable
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "makes file executable" })
+-- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "makes file executable" })
 
 -- Hightlight yanking
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -107,5 +107,16 @@ vim.keymap.set("n", "<leader>cf", function()
     })
 end, { desc = "Format current file" })
 
-vim.keymap.set("n", "<leader>ls", ":LiveServerStart<CR>", { desc = "Start Live Server" })
-vim.keymap.set("n", "<leader>lq", ":LiveServerStop<CR>", { desc = "Stop Live Server" })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "html",
+    callback = function()
+        vim.keymap.set("n", "<leader>ls", ":LiveServerStart<CR>", {
+            buffer = true,
+            desc = "Start Live Server",
+        })
+        vim.keymap.set("n", "<leader>lq", ":LiveServerStop<CR>", {
+            buffer = true,
+            desc = "Stop Live Server",
+        })
+    end,
+})

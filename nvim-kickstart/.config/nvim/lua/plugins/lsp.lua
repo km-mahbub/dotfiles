@@ -271,6 +271,7 @@ return {
             "prettierd", -- Used to format js/ts code
             "prettier", -- Used to format js/ts code when prettierd is not working
             "eslint_d",
+            "markdownlint",
         })
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
