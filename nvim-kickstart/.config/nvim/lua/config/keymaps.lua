@@ -120,3 +120,8 @@ vim.api.nvim_create_autocmd("FileType", {
         })
     end,
 })
+
+vim.keymap.set("n", "<leader>tb", function()
+    vim.o.background = vim.o.background == "dark" and "light" or "dark"
+    dofile(vim.fn.stdpath("config") .. "/lua/current-theme.lua")
+end, { desc = "Toggle background" })

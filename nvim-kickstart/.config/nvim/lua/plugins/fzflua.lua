@@ -107,6 +107,7 @@ return {
                     "kanagawa",
                     "solarized-osaka",
                     "tokyonight",
+                    "catppuccin",
                 }
 
                 require("fzf-lua").fzf_exec(themes, {

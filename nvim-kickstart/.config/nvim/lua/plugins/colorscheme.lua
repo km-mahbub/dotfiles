@@ -1,4 +1,10 @@
 return {
+    -- NOTE: Catpuccin
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        -- priority = 1000,
+    },
     -- NOTE: Rose pine
     {
         "rose-pine/neovim",
