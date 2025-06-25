@@ -4,18 +4,31 @@ return {
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {
         settings = {
-            -- All these are optional and can be customized
-            expose_as_code_action = "all",
-            tsserver_plugins = {},
-            -- Inlay hints config
-            inlay_hints = {
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
+            typescript = {
+                inlayHints = {
+                    -- You can set this to 'all' or 'literals' to enable more hints
+                    includeInlayParameterNameHints = "none", -- 'none' | 'literals' | 'all'
+                    includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                    includeInlayFunctionParameterTypeHints = false,
+                    includeInlayVariableTypeHints = false,
+                    includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                    includeInlayPropertyDeclarationTypeHints = false,
+                    includeInlayFunctionLikeReturnTypeHints = true,
+                    includeInlayEnumMemberValueHints = true,
+                },
+            },
+            javascript = {
+                inlayHints = {
+                    -- You can set this to 'all' or 'literals' to enable more hints
+                    includeInlayParameterNameHints = "none", -- 'none' | 'literals' | 'all'
+                    includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                    includeInlayVariableTypeHints = false,
+                    includeInlayFunctionParameterTypeHints = false,
+                    includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                    includeInlayPropertyDeclarationTypeHints = false,
+                    includeInlayFunctionLikeReturnTypeHints = true,
+                    includeInlayEnumMemberValueHints = true,
+                },
             },
         },
     },

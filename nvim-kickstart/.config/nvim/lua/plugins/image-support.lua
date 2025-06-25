@@ -1,6 +1,7 @@
 return {
     -- requires pngpaste ( brew install pngpaste )
     "HakonHarnes/img-clip.nvim",
+    enabled = false,
     event = "VeryLazy",
     keys = {
         -- suggested keymap
