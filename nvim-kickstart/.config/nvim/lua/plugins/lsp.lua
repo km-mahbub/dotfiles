@@ -219,7 +219,36 @@ return {
             --
             -- But for many setups, the LSP (`ts_ls`) will work just fine
             -- ts_ls = {},
-            --
+
+            ts_ls = {
+                filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+                root_dir = require("lspconfig").util.root_pattern("package.json", "tsconfig.json", ".git"),
+                settings = {
+                    javascript = {
+                        inlayHints = {
+                            includeInlayEnumMemberValueHints = true,
+                            includeInlayFunctionLikeReturnTypeHints = true,
+                            includeInlayFunctionParameterTypeHints = true,
+                            includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                            includeInlayPropertyDeclarationTypeHints = true,
+                            includeInlayVariableTypeHints = false,
+                        },
+                    },
+
+                    typescript = {
+                        inlayHints = {
+                            includeInlayEnumMemberValueHints = true,
+                            includeInlayFunctionLikeReturnTypeHints = true,
+                            includeInlayFunctionParameterTypeHints = true,
+                            includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                            includeInlayPropertyDeclarationTypeHints = true,
+                            includeInlayVariableTypeHints = false,
+                        },
+                    },
+                },
+            },
 
             lua_ls = {
                 -- cmd = { ... },

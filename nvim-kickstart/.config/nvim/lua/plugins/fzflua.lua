@@ -98,7 +98,7 @@ return {
             desc = "[/] Live grep the current buffer",
         },
         {
-            "<leader>ths",
+            "<leader>tc",
             function()
                 -- Defined themes from colorscheme.lua
                 local themes = {
