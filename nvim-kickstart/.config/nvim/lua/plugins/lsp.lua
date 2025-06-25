@@ -219,7 +219,6 @@ return {
             --
             -- But for many setups, the LSP (`ts_ls`) will work just fine
             -- ts_ls = {},
-
             -- ts_ls = {
             --     filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
             --     root_dir = require("lspconfig").util.root_pattern("package.json", "tsconfig.json", ".git"),
@@ -299,8 +298,10 @@ return {
             "stylua", -- Used to format Lua code
             "prettierd", -- Used to format js/ts code
             "prettier", -- Used to format js/ts code when prettierd is not working
-            "eslint_d",
+            -- "eslint_d",
             "markdownlint",
+            "biome",
+            { "eslint_d", version = "13.1.2" },
         })
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

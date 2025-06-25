@@ -5,12 +5,50 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             local lint = require("lint")
+            -- Utility to check if a linter is installed
+            -- local function is_executable(name)
+            --     return vim.fn.executable(name) == 1
+            -- end
+            --
+            -- -- Priority list of linters for specific filetypes
+            -- local linter_priority = {
+            --     javascript = { "biomejs", "eslint_d" },
+            --     javascriptreact = { "biomejs", "eslint_d" },
+            --     typescript = { "biomejs", "eslint_d" },
+            --     typescriptreact = { "biomejs", "eslint_d" },
+            -- }
+            --
+            -- -- Dynamically assign the first available linter per filetype
+            -- for ft, linters in pairs(linter_priority) do
+            --     for _, linter in ipairs(linters) do
+            --         if is_executable(linter) then
+            --             lint.linters_by_ft[ft] = { linter }
+            --             break
+            --         end
+            --     end
+            -- end
+            --
+            -- lint.linters_by_ft.markdown = { "markdownlint" }
+
             lint.linters_by_ft = {
                 markdown = { "markdownlint" },
-                typescript = { "eslint_d" },
-                javascript = { "eslint_d" },
-                typescriptreact = { "eslint_d" },
-                javascriptreact = { "eslint_d" },
+                typescript = { "biomejs", "eslint_d" },
+                javascript = { "biomejs", "eslint_d" },
+                typescriptreact = { "biomejs", "eslint_d" },
+                javascriptreact = { "biomejs", "eslint_d" },
+            }
+
+            local eslint = lint.linters.eslint_d
+
+            eslint.args = {
+                "--no-warn-ignored", -- <-- this is the key argument
+                "--format",
+                "json",
+                "--stdin",
+                "--stdin-filename",
+                function()
+                    return vim.api.nvim_buf_get_name(0)
+                end,
             }
 
             -- To allow other plugins to add linters to require('lint').linters_by_ft,
