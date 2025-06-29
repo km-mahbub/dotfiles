@@ -308,7 +308,8 @@ return {
             -- "eslint_d",
             "markdownlint",
             "biome",
-            { "eslint_d", version = "13.1.2" },
+            -- { "eslint_d", version = "13.1.2" },
+            "eslint",
         })
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
