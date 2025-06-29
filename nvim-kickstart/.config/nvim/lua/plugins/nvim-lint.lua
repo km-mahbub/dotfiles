@@ -32,10 +32,10 @@ return {
 
             lint.linters_by_ft = {
                 markdown = { "markdownlint" },
-                typescript = { "biomejs", "eslint_d" },
-                javascript = { "biomejs", "eslint_d" },
-                typescriptreact = { "biomejs", "eslint_d" },
-                javascriptreact = { "biomejs", "eslint_d" },
+                typescript = { "eslint_d" },
+                javascript = { "eslint_d" },
+                typescriptreact = { "eslint_d" },
+                javascriptreact = { "eslint_d" },
             }
 
             local eslint = lint.linters.eslint_d
