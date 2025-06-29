@@ -278,6 +278,13 @@ return {
                     },
                 },
             },
+            zls = {
+                settings = {
+                    zls = {
+                        semantic_tokens = "partial",
+                    },
+                },
+            },
         }
 
         -- Ensure the servers and tools above are installed

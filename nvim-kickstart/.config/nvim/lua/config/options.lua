@@ -46,3 +46,11 @@ vim.g.editorconfig = true
 --  and `:help 'listchars'`
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+-- don't show parse errors in a separate window
+vim.g.zig_fmt_parse_errors = 0
+-- disable format-on-save from `ziglang/zig.vim`
+vim.g.zig_fmt_autosave = 0
+
+-- to fix nvim notify background color highlight warning
+vim.api.nvim_set_hl(0, "NotifyBackgroundFallback", { bg = "#1C1C21" })

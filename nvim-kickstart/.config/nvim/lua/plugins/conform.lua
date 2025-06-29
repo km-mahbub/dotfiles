@@ -5,6 +5,11 @@ return {
             biome = {
                 require_cwd = true,
             },
+            zigfmt = {
+                command = "zig",
+                args = { "fmt", "--stdin" },
+                stdin = true,
+            },
         },
         formatters_by_ft = {
             lua = { "stylua" },
@@ -20,11 +25,12 @@ return {
             -- css = { "prettierd", "prettier", stop_after_first = true },
             -- html = { "prettierd", "prettier", stop_after_first = true },
             json = { "biome", "prettierd", "prettier", stop_after_first = true },
+            zig = { "zigfmt" },
         },
         format_on_save = {
             -- These options will be passed to conform.format()
             timeout_ms = 500,
-            lsp_format = "fallback",
+            -- lsp_format = "fallback",
         },
     },
 }

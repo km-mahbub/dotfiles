@@ -23,6 +23,7 @@ return {
         "rustaceanvim/neotest",
         "marilari88/neotest-vitest",
         "nvim-neotest/neotest-jest",
+        "lawrence-laz/neotest-zig",
     },
     opts = function(_, opts)
         opts.adapters = opts.adapters or {}
@@ -36,6 +37,11 @@ return {
         opts.adapters["rustaceanvim.neotest"] = {}
         opts.adapters["neotest-vitest"] = {}
         opts.adapters["neotest-jest"] = {}
+        opts.adapters["neotest-zig"] = {
+            dap = {
+                adapter = "lldb",
+            },
+        }
     end,
     config = function(_, opts)
         if opts.adapters then

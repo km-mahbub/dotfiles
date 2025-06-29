@@ -43,6 +43,7 @@ return {
                     "java",
                     "rust",
                     "toml",
+                    "zig",
                 },
                 incremental_selection = {
                     enable = true,
