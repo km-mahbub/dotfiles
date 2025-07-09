@@ -55,4 +55,5 @@ end
 
 vim.api.nvim_create_user_command("Terminalpop", pop_terminal, {})
 
-vim.keymap.set({ "n", "t" }, "<space>c/", pop_terminal)
+vim.keymap.set({ "n" }, "<space>c/", pop_terminal)
+vim.keymap.set({ "t" }, "\\c/", pop_terminal)
