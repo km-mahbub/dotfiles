@@ -44,6 +44,9 @@ return {
                     "rust",
                     "toml",
                     "zig",
+                    "elixir",
+                    "eex",
+                    "heex",
                 },
                 incremental_selection = {
                     enable = true,

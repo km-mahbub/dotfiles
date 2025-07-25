@@ -11,6 +11,7 @@ return {
                 includeInlayFunctionLikeReturnTypeHints = true,
                 includeInlayPropertyDeclarationTypeHints = true,
                 includeInlayEnumMemberValueHints = true,
+                importModuleSpecifier = "relative",
             },
         },
     },
