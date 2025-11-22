@@ -21,3 +21,9 @@ vim.api.nvim_create_autocmd("FileType", {
         end)
     end,
 })
+vim.g.copilot_completion_enabled = true
+
+vim.api.nvim_create_user_command("CopilotToggleCmp", function()
+    vim.g.copilot_completion_enabled = not vim.g.copilot_completion_enabled
+    print("Copilot completion: " .. tostring(vim.g.copilot_completion_enabled))
+end, {})
