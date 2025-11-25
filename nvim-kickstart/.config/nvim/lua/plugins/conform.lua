@@ -18,13 +18,13 @@ return {
             -- You can customize some of the format options for the filetype (:help conform.format)
             rust = { "rustfmt" },
             -- Conform will run the first available formatter
-            javascript = { "biome", "prettierd", "prettier", stop_after_first = true },
-            javascriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
-            typescriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
-            typescript = { "biome", "prettierd", "prettier", stop_after_first = true },
+            javascript = { "dprint", "biome", "prettierd", "prettier", stop_after_first = true },
+            javascriptreact = { "dprint", "biome", "prettierd", "prettier", stop_after_first = true },
+            typescriptreact = { "dprint", "biome", "prettierd", "prettier", stop_after_first = true },
+            typescript = { "dprint", "biome", "prettierd", "prettier", stop_after_first = true },
             -- css = { "prettierd", "prettier", stop_after_first = true },
             -- html = { "prettierd", "prettier", stop_after_first = true },
-            json = { "biome", "prettierd", "prettier", stop_after_first = true },
+            json = { "dprint", "biome", "prettierd", "prettier", stop_after_first = true },
             zig = { "zigfmt" },
         },
         format_on_save = {
