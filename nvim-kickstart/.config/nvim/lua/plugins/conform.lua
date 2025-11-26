@@ -10,6 +10,29 @@ return {
                 args = { "fmt", "--stdin" },
                 stdin = true,
             },
+            dprint = {
+                condition = function()
+                    -- Get current buffer's filename directly (no ctx)
+                    local filename = vim.api.nvim_buf_get_name(0)
+                    if filename == nil or filename == "" then
+                        return false
+                    end
+
+                    -- Directory of the current file
+                    local dir = vim.fs.dirname(filename)
+                    if not dir then
+                        return false
+                    end
+
+                    -- Search upward for dprint config
+                    local found = vim.fs.find(
+                        { "dprint.json", "dprint.jsonc" },
+                        { path = dir, upward = true, type = "file" }
+                    )
+
+                    return not vim.tbl_isempty(found)
+                end,
+            },
         },
         formatters_by_ft = {
             lua = { "stylua" },
