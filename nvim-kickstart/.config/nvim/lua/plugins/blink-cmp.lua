@@ -1,25 +1,20 @@
 return {
     {
         "saghen/blink.compat",
-        -- use the latest release, via version = '*', if you also use the latest release for blink.cmp
         version = "*",
-        -- lazy.nvim will automatically load the plugin when it's required by blink.cmp
         lazy = true,
-        -- make sure to set opts so that lazy.nvim calls blink.compat's setup
-        opts = {},
+        config = function() end,
     },
     {
         "saghen/blink.cmp",
-        -- optional: provides snippets for the snippet source
         dependencies = {
             "rafamadriz/friendly-snippets",
             "moyiz/blink-emoji.nvim",
             "ray-x/cmp-sql",
             "giuxtaposition/blink-cmp-copilot",
         },
-
-        -- use a release tag to download pre-built binaries
         version = "1.*",
+        event = "InsertEnter",
         -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
         -- build = 'cargo build --release',
         -- If you use nix, you can build from source using latest nightly rust with:
@@ -83,7 +78,7 @@ return {
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             sources = {
-                default = { "lsp", "path", "snippets", "buffer", "emoji", "sql", "copilot" },
+                default = { "lsp", "path", "snippets", "buffer", "emoji", "sql", "copilot", "minuet" },
                 providers = {
                     copilot = {
                         enabled = function()
@@ -91,7 +86,7 @@ return {
                         end,
                         name = "copilot",
                         module = "blink-cmp-copilot",
-                        score_offset = 100,
+                        score_offset = 50,
                         should_show_items = true,
                     },
                     emoji = {
@@ -130,6 +125,13 @@ return {
                             )
                         end,
                     },
+                    minuet = {
+                        name = "minuet",
+                        module = "minuet.blink",
+                        async = true,
+                        timeout_ms = 30000,
+                        score_offset = 100,
+                    },
                 },
             },
 
@@ -141,5 +143,29 @@ return {
             fuzzy = { implementation = "prefer_rust_with_warning" },
         },
         opts_extend = { "sources.default" },
+    },
+    {
+        "milanglacier/minuet-ai.nvim",
+        event = "InsertEnter",
+        lazy = true,
+        config = function()
+            require("minuet").setup({
+                provider = "openai_fim_compatible",
+                n_completions = 1,
+                context_window = 512,
+                request_timeout = 30000,
+                debounce = 300,
+                throttle = 800,
+                provider_options = {
+                    openai_fim_compatible = {
+                        api_key = "TERM",
+                        name = "LM Studio",
+                        end_point = "http://localhost:1234/v1/completions",
+                        model = "qwen2.5-coder-1.5b",
+                        optional = { max_tokens = 56, top_p = 0.9 },
+                    },
+                },
+            })
+        end,
     },
 }
