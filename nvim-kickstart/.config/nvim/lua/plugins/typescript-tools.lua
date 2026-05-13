@@ -4,6 +4,11 @@ return {
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {
         settings = {
+            tsserver_preferences = {
+                importModuleSpecifierPreference = "relative",
+                importModuleSpecifierEnding = "minimal",
+                includePackageJsonAutoImports = "off",
+            },
             tsserver_file_preferences = {
                 includeInlayParameterNameHints = "all",
                 includeInlayFunctionParameterTypeHints = true,
@@ -11,8 +16,10 @@ return {
                 includeInlayFunctionLikeReturnTypeHints = true,
                 includeInlayPropertyDeclarationTypeHints = true,
                 includeInlayEnumMemberValueHints = true,
-                importModuleSpecifier = "relative",
             },
         },
     },
+    config = function(_, opts)
+        require("typescript-tools").setup(opts)
+    end,
 }
